@@ -596,6 +596,31 @@ module Plume
 			# end
 		end
 
+		def commit_stmt
+			#
+				# Relevant `parse.y` grammar rules:
+				# cmd ::= COMMIT|END(X) trans_opt.   {sqlite3EndTransaction(pParse,@X);}
+				#
+				# Syntax diagram:
+				#   ◯─▶┬─▶{ COMMIT }┬─▶─┬──▶{ TRANSACTION }─┬─▶◯
+				#      ├▶{ End }──▶─┤   ├─────────▶─────────┤
+
+				# Simplified grammar:
+				#   COMMIT [TRANSACTION] | END [TRANSACTION]
+				#
+				# Relevant SQLite documentation:
+				#   - https://www.sqlite.org/lang_transaction.html
+			#
+			commit_kw = require_one_of :COMMIT, :END
+			transaction_kw = maybe :TRANSACTION
+
+			CommitStatement.concrete(
+				full_source:      @lexer.sql,
+				commit_kw:        Token::Keyword(commit_kw),
+				transaction_kw:  Token::Keyword(transaction_kw),
+			)
+		end
+
 		# ---------- Clauses ----------
 
 		def expression(min_precedence = 0)

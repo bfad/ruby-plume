@@ -26,6 +26,7 @@ module Plume
 	autoload :ColumnDefinition, "plume/ast/column_definition"
 	autoload :ColumnName, "plume/ast/column_name"
 	autoload :ColumnType, "plume/ast/column_type"
+	autoload :CommitStatement, "plume/ast/commit_statement"
 	autoload :ConflictClause, "plume/ast/conflict_clause"
 	autoload :CreateTableStatement, "plume/ast/create_table_statement"
 	autoload :CrossJoinOperator, "plume/ast/cross_join_operator"

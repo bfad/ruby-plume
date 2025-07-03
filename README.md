@@ -203,7 +203,7 @@ SQLite works with a grammar of _167_ token types, _136_ of which are keywords. T
 - [ ] `analyze_stmt`
 - [ ] `attach_stmt`
 - [ ] `begin_stmt`
-- [ ] `commit_stmt`
+- [x] `commit_stmt`
 - [x] `create_table_stmt`
 - [ ] `create_index_stmt`
 - [ ] `create_trigger_stmt`
