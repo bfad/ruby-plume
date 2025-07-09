@@ -13,4 +13,5 @@ group :development do
 	gem "rubocop", platform: :ruby
 	gem "ruby-lsp", platform: :ruby
 	gem "simplecov", platform: :ruby
+	gem "debug", ">= 1.0.0"
 end
